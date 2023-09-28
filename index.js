@@ -28,4 +28,3 @@ dbConnection();
 app.listen(8080, () => {
     console.log(`Servidor funcionando en el puerto ${8080}`);
 })
-
