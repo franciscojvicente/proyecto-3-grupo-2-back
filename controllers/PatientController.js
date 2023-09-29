@@ -1,19 +1,19 @@
-const Turno = require("../models/turnoSchema");
+const Patient = require("../models/patientSchema");
 const mongoose = require("mongoose");
 
-const getAllTurnos = async (req, res) => {
-    const turnos = await Turno.find();
+const getAllPatients = async (req, res) => {
+    const pacientes = await Patient.find();
     try {
-        if(!turnos) {
+        if(!pacientes) {
             return res.status(404).json({
-                mensaje: "Turnos no encontrados",
+                mensaje: "Pacientes no encontrados",
                 status: 404
             })
         }
         return res.status(200).json({
-            mensaje: "Turnos encontrados",
+            mensaje: "Pacientes encontrados",
             status: 200,
-            turnos
+            pacientes
         })
     } catch (error) {
         return res.status(500).json({
@@ -23,57 +23,59 @@ const getAllTurnos = async (req, res) => {
     }
 }
 
-const getTurnoById = async (req, res) => {
+const getPatientById = async (req, res) => {
     const { id } = req.params;
-    const turno = await Turno.findById(id);
+    const patient = await Patient.findById(id);
     try {
         if(!mongoose.isValidObjectId(id)) {
             return  res.status(400).json({
-                mensaje: "ID del turno invalido",
+                mensaje: "ID del paciente invalido",
                 status: 400
             })
         }
-        if(!turno) {
+        if(!patient) {
             res.status(404).json({
-                mensaje: "Turno no encontrado",
+                mensaje: "Paciente no encontrado",
                 status: 404
             })
         }
         return res.status(200).json({
-            mensaje: "Curso encontrado",
+            mensaje: "Paciente encontrado",
             status: 200,
-            turno
+            patient
         })
     } catch (error) {
         return res.status(500).json({
         mensaje: "Hubo un error, intentelo mas tarde", 
         status: 500
         })
-    }
+    } 
 }
 
-const createTurno = async (req, res) => {
-    const { vet, pet, date, hour, details } = req.body;
-    const turno = await Turno.findOne({date, hour}); // confirmar si está bien así, si funciona
+const createPatient = async (req, res) => {
+    const { name, lastname, email, cellphone, pet, kind, breed } = req.body;
+    const patient = await Patient.findOne({email});
     try {
-        if(turno) {
+        if(patient) {
             return res.status(400).json({
-                mensaje: "Ya hay un turno existente en ese horario",
+                mensaje: "Ya hay un paciente existente en ese mail",
                 status: 400
             })
         }
-        const newTurno = new Turno ({
-            vet,
+        const newPatient = new Patient ({
+            name,
+            lastname,
+            email,
+            cellphone,
             pet,
-            date,
-            hour,
-            details
+            kind,
+            breed
         });
-        await newTurno.save();
+        await newPatient.save();
         return res.status(201).json({
-            mensaje: "Turno creado correctamente",
+            mensaje: "Paciente creado correctamente",
             status: 201,
-            newTurno
+            newPatient
         })
     } catch (error) {
         return res.status(500).json({
@@ -83,51 +85,51 @@ const createTurno = async (req, res) => {
     }
 }
 
-const updateTurno = async (req, res) => {
+const updatePatient = async (req, res) => {
     const { id } = req.params;
-    const { vet, pet, hour, date, details } = req.body;
+    const { name, lastname, email, cellphone, pet, kind, breed } = req.body;
     try {
-        const turno = await Turno.findByIdAndUpdate(id, req.body, {new: true});
-        if(!turno) {
+        const patient = await Patient.findByIdAndUpdate(id, req.body, {new: true});
+        if(!patient) {
             return res.status(404).json({
-                mensaje: "Turno no encontrado",
+                mensaje: "Paciente no encontrado",
                 status: 404
             })
         }
         return res.status(200).json({
-            mensaje: "Turno modificado correctamente",
+            mensaje: "Paciente modificado correctamente",
             status: 200,
-            turno
+            patient
         })
     } catch (error) {
         return res.status(500).json({
-            mensaje: "Hubo un error, intentelo mas tarde",
+            mensaje: "Hubo un error, intentelo más tarde",
             status: 500,
             error
         })
     }
 }
 
-const deleteTurno = async (req, res) => {
+const deletePatient = async (req, res) => {
     const { id } = req.params;
-    const turno = await Turno.findByIdAndDelete(id);
+    const patient = await Patient.findByIdAndDelete(id);
     try {
         if(!mongoose.isValidObjectId(id)) {
             return res.status(400).json({
-                mensaje: "ID del turno invalido",
+                mensaje: "ID del paciente invalido",
                 status: 400
             })
         }
-        if(!turno) {
+        if(!patient) {
             return res.status(404).json({
-                mensaje: "Turno no encontrado",
+                mensaje: "Paciente no encontrado",
                 status: 404
             })
         }
         return res.status(200).json({
-            mensaje: "Turno eliminado correctamente",
+            mensaje: "Paciente eliminado correctamente",
             status: 200,
-            turno
+            patient
         })
     } catch (error) {
         return res.status(500).json({
@@ -139,9 +141,9 @@ const deleteTurno = async (req, res) => {
 }
 
 module.exports = {
-    getAllTurnos,
-    createTurno,
-    getTurnoById,
-    updateTurno,
-    deleteTurno
+    getAllPatients,
+    createPatient,
+    getPatientById,
+    updatePatient,
+    deletePatient
 }
