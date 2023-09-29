@@ -10,6 +10,11 @@ const userSchema = new mongoose.Schema({
         type: String,
         require: true,
         trim: [true, "No puede tener espacios"]
+    },
+    rol : {
+        type: String,
+        default: "user",
+        enum: ["user", "admin"]
     }
 })
 
