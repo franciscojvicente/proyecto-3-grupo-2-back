@@ -16,7 +16,7 @@ router.post("/login", login);
 // user 
 router.get("/users", getAllUsers);
 router.get("/user/:id", getUserById);
-// router.put("/user/:id", authenticateUser, updateUser);
+// router.put("/user/:id", updateUser);
 router.delete("/user/:id", deleteUser);
 
 router.put("/admin/:id", changeToAdmin);
