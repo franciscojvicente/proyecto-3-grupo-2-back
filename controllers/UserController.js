@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const User = require("../models/userSchema");
 const { encryptPassword, comparePassword } = require("../utils/passwordHandler");
-// const jwt = require("jsonwebtoken");
+const jwt = require("jsonwebtoken");
 require("dotenv").config();
 
 const getAllUsers = async (req, res) => {
@@ -86,7 +86,7 @@ const register = async (req, res) => {
 const login = async (req, res) => {
     const { username, password } = req.body;
     const user = await User.findOne({username});
-    // const secret = process.env.JWT_SECRET; 
+    const secret = process.env.JWT_SECRET; 
     try {
         if(!user) {
             return res.status(404).json({
@@ -100,13 +100,12 @@ const login = async (req, res) => {
                 status: 400
             })
         }
-        // const payload = { // no se comparten las contrasena ni se envian todos los datos
-        //     sub: user._id,
-        //     email: user.username,
-        //     nombre: user.nombre,
-        //     rol: user.rol
-        // }
-        // const token = jwt.sign(payload, secret, {algorithm: process.env.JWT_ALGORITHM, expiresIn: "1h"});
+        const payload = {
+            sub: user._id,
+            email: user.username,
+            rol: user.rol
+        }
+        const token = jwt.sign(payload, secret, {algorithm: process.env.JWT_ALGORITHM, expiresIn: "1h"});
         return res.status(200).json({
             mensaje: "Inicio de sesión exitoso",
             status: 200, 
