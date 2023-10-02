@@ -177,29 +177,54 @@ const deleteUser = async (req, res) => {
 //     const { id } = req.params;
 //     const { username, password } = req.body;
 //     try {
-//         if(!mongoose.isValidObjectId(id)) {
-//              return res.status(400).json({
-//                  mensaje: "ID del usuario invalido",
-//                  status: 400
-//              })
-//         } 
-//         if (req.body.password) {
-//             const user = await User.findByIdAndUpdate(id, {
+//         if(!mongoose.isValidObjectId(id)){
+//             return res.status(400).json({
+//                 mensaje: "Id invalido",
+//                 status: 400
+//             })
+//         }
+//       if(req.body.password){
+//         const user = await User.findByIdAndUpdate(id, {
 //             ...req.body,
 //             username,
 //             password: encryptPassword(password)
-//         }, {new:true})
+//         }, {new: true} )
 //         if(!user) {
 //             return res.status(404).json({
-//                 mensaje: "Usuario no encontrado",
+//                 mensaje:"Usuario no encontrado",
 //                 status: 404
 //             })
 //         }
 
-//     } catch (error) {
-
+//         return res.status(200).json({
+//             mensaje: "Usuario modificado correctamente",
+//             status: 200,
+//             user
+//         })
+//       }
+//       const user = await User.findByIdAndUpdate(id, {
+//         ...req.body,
+//         username,
+//     }, {new: true} )
+//     if(!user) {
+//         return res.status(404).json({
+//             mensaje:"Usuario no encontrado",
+//             status: 404
+//         })
 //     }
-// } VER VIDEO  
+
+//     return res.status(200).json({
+//         mensaje: "Usuario modificado correctamente",
+//         status: 200,
+//         user
+//     })
+//     } catch (error) {
+//         return res.status(500).json({
+//             mensaje: "Hubo un error, intentelo mas tarde",
+//             status: 500
+//         })
+//     }
+// }
 
 module.exports = {
     getAllUsers,
