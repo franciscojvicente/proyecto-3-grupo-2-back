@@ -24,7 +24,7 @@ router.put("/admin/:id", changeToAdmin);
 // patients
 router.post("/paciente", createPatient);
 router.get("/pacientes", getAllPatients);
-router.get("paciente/:id", getPatientById);
+router.get("/paciente/:id", getPatientById);
 router.put("/paciente/:id", updatePatient);
 router.delete("/paciente/:id", deletePatient);
 
