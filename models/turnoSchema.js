@@ -37,7 +37,7 @@ const turnoSchema = new mongoose.Schema({
     },
     },
     hour: {
-        type: Number,
+        type: String,
         require: true,
         trim: true
     },
