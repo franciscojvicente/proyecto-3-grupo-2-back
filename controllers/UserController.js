@@ -129,6 +129,12 @@ const changeToAdmin = async (req, res) => {
                 status: 404
             })
         }
+        if(user.rol === "admin") {
+            return res.status(304).json({
+                mensaje: "El usuario ya es administrador",
+                status: 304
+            })
+        }
         user.rol = "admin"
         await user.save();
         res.status(200).json({
