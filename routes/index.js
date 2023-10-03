@@ -31,7 +31,7 @@ router.delete("/paciente/:id", deletePatient);
 // turnos
 router.post("/turno", createTurno);
 router.get("/turnos", getAllTurnos);
-router.get("turno/:id", getTurnoById);
+router.get("/turno/:id", getTurnoById);
 router.put("/turno/:id", updateTurno);
 router.delete("/turno/:id", deleteTurno);
 
