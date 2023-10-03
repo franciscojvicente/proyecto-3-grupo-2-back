@@ -40,7 +40,7 @@ const getTurnoById = async (req, res) => {
             })
         }
         return res.status(200).json({
-            mensaje: "Curso encontrado",
+            mensaje: "Turno encontrado",
             status: 200,
             turno
         })
