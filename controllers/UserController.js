@@ -132,7 +132,8 @@ const changeToAdmin = async (req, res) => {
         if(user.rol === "admin") {
             return res.status(304).json({
                 mensaje: "El usuario ya es administrador",
-                status: 304
+                status: 304,
+                user
             })
         }
         user.rol = "admin"
