@@ -87,6 +87,17 @@ const updateTurno = async (req, res) => {
     const { id } = req.params;
     const { vet, pet, hour, date, details } = req.body;
     try {
+        const existingTurnoWithSameHour = await Turno.findOne({
+            _id: { $ne: id },
+            hour: hour,
+            date: date
+        });
+        if(existingTurnoWithSameHour) {
+            return res.status(400).json({
+                mensaje: "El horario ya está ocupado en otro turno",
+                status: 400
+            });
+        }   
         const turno = await Turno.findByIdAndUpdate(id, req.body, {new: true});
         if(!turno) {
             return res.status(404).json({
