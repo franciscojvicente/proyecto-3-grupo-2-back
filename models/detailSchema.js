@@ -23,8 +23,7 @@ const detailSchema = new mongoose.Schema({
     },
     plan: {
         type: String,
-        require: true,
-        trim: true
+        require: true
     },
     details: {
         type: String,
