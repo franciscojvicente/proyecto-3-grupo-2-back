@@ -89,6 +89,15 @@ const updatePatient = async (req, res) => {
     const { id } = req.params;
     const { name, lastname, email, cellphone, pet, kind, breed } = req.body;
     try {
+        const existingPatientWithSameEmail = await Patient.findOne({
+            email: email
+        });
+        if(existingPatientWithSameEmail) {
+            return res.status(400).json({
+                mensaje: "El mail ya pertenece a otro paciente",
+                status: 400
+            });
+        }
         const patient = await Patient.findByIdAndUpdate(id, req.body, {new: true});
         if(!patient) {
             return res.status(404).json({

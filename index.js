@@ -20,7 +20,7 @@ app.use(morgan("dev"));
 passport.use("jwt", jwtStrategy);
 
 // configuracion rutas
-app.use("/", router); // uso el middleware para encerrar todas las rutas
+app.use(process.env.API, router); // uso el middleware para encerrar todas las rutas
 
 const port = process.env.PORT;
 dbConnection();
