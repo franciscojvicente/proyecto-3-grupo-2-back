@@ -1,5 +1,6 @@
 const { config } = require("dotenv");
 const nodemailer = require("nodemailer");
+const template = require("./template");
 
 const sendEmail = async (newDetail) => {
     const transporter = nodemailer.createTransport({
@@ -25,7 +26,7 @@ const emailTemplate = (newDetail) => {
         from: "veterinariapatitas4@gmail.com",
         to: newDetail.email,
         subject: "¡Recibimos tu solicitud!",
-        text: `Hola! ${newDetail.name}, hemos registrado tu solicitud para enviarte información sobre el plan ${newDetail.plan}. Pronto nos pondremos en contacto.`
+        html: template(newDetail)
     }
 }
 
