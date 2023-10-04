@@ -23,7 +23,7 @@ const detailSchema = new mongoose.Schema({
     },
     details: {
         type: String,
-        require: false
+        require: true
     }
 })
 
