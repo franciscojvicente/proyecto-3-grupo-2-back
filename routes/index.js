@@ -4,6 +4,7 @@ const { getAllUsers, register, changeToAdmin, login, getUserById, deleteUser, up
 const authenticateOwner = require("../middlewares/authOwner");
 const authenticateUser = require("../middlewares/authUser");
 const authenticateAdmin = require("../middlewares/authAdmin");
+const newRequest = require("../controllers/detailController");
 // falta middlewares de admin, dueño y user
 
 const router = require("express").Router();
@@ -33,5 +34,8 @@ router.get("/turnos", getAllTurnos);
 router.get("/turno/:id", getTurnoById);
 router.put("/turno/:id", updateTurno);
 router.delete("/turno/:id", deleteTurno);
+
+// details
+router.post("/solicitud", newRequest);
 
 module.exports = router;
