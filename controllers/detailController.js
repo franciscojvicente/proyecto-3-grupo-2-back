@@ -17,6 +17,7 @@ const newRequest = async (req, res) => {
             lastname,
             email,
             cellphone,
+            plan,
             details
         });
         await newDetail.save();
