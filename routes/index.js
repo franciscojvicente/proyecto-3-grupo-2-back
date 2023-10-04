@@ -1,12 +1,11 @@
 const { deletePatient, updatePatient, getPatientById, createPatient, getAllPatients } = require("../controllers/PatientController");
 const { getAllTurnos, createTurno, getTurnoById, updateTurno, deleteTurno} = require("../controllers/TurnoController");
-const { getAllUsers, register, changeToAdmin, login, getUserById, deleteUser } = require("../controllers/UserController");
+const { getAllUsers, register, changeToAdmin, login, getUserById, deleteUser, updateUser } = require("../controllers/UserController");
 const authenticateOwner = require("../middlewares/authOwner");
 const authenticateUser = require("../middlewares/authUser");
 const authenticateAdmin = require("../middlewares/authAdmin");
 // falta middlewares de admin, dueño y user
 
-// falta updateUser
 const router = require("express").Router();
 
 // register y login
@@ -16,7 +15,7 @@ router.post("/login", login);
 // user 
 router.get("/users", getAllUsers);
 router.get("/user/:id", getUserById);
-// router.put("/user/:id", updateUser);
+router.put("/user/:id", updateUser);
 router.delete("/user/:id", deleteUser);
 
 router.put("/admin/:id", changeToAdmin);
