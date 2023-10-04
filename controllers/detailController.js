@@ -27,6 +27,7 @@ const newRequest = async (req, res) => {
             newDetail
         })
     } catch (error) {
+        console.log(error);
         return res.status(500).json({
         mensaje: "Hubo un error, intentelo mas tarde", 
         status: 500
