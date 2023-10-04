@@ -3,7 +3,7 @@ const mongoose = require("mongoose");
 const sendEmail = require("../utils/emailHandler");
 
 const newRequest = async (req, res) => {
-    const { name, lastname, email, cellphone, details } = req.body;
+    const { name, lastname, email, cellphone, plan, details } = req.body;
     const detail = await Detail.findOne({email, cellphone});
     try {
         if(detail) {
