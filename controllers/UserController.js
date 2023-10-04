@@ -189,6 +189,15 @@ const updateUser = async (req, res) => {
                 status: 400
             })
         }
+        const existingUserWithSameEmail = await User.findOne({
+            username: username
+        })
+        if (existingUserWithSameEmail) {
+            return res.status(400).json({
+                mensaje: "El username ya está ocupado en otro usuario",
+                status: 400
+            })
+        }
       if(req.body.password){
         const user = await User.findByIdAndUpdate(id, {
             ...req.body,
