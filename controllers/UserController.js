@@ -179,58 +179,58 @@ const deleteUser = async (req, res) => {
     }
 }
 
-// const updateUser = async (req, res) => {
-//     const { id } = req.params;
-//     const { username, password } = req.body;
-//     try {
-//         if(!mongoose.isValidObjectId(id)){
-//             return res.status(400).json({
-//                 mensaje: "Id invalido",
-//                 status: 400
-//             })
-//         }
-//       if(req.body.password){
-//         const user = await User.findByIdAndUpdate(id, {
-//             ...req.body,
-//             username,
-//             password: encryptPassword(password)
-//         }, {new: true} )
-//         if(!user) {
-//             return res.status(404).json({
-//                 mensaje:"Usuario no encontrado",
-//                 status: 404
-//             })
-//         }
+const updateUser = async (req, res) => {
+    const { id } = req.params;
+    const { username, password } = req.body;
+    try {
+        if(!mongoose.isValidObjectId(id)){
+            return res.status(400).json({
+                mensaje: "Id invalido",
+                status: 400
+            })
+        }
+      if(req.body.password){
+        const user = await User.findByIdAndUpdate(id, {
+            ...req.body,
+            username,
+            password: encryptPassword(password)
+        }, {new: true} )
+        if(!user) {
+            return res.status(404).json({
+                mensaje:"Usuario no encontrado",
+                status: 404
+            })
+        }
 
-//         return res.status(200).json({
-//             mensaje: "Usuario modificado correctamente",
-//             status: 200,
-//             user
-//         })
-//       }
-//       const user = await User.findByIdAndUpdate(id, {
-//         ...req.body,
-//         username,
-//     }, {new: true} )
-//     if(!user) {
-//         return res.status(404).json({
-//             mensaje:"Usuario no encontrado",
-//             status: 404
-//         })
-//     }
+        return res.status(200).json({
+            mensaje: "Usuario modificado correctamente",
+            status: 200,
+            user
+        })
+      }
+      const user = await User.findByIdAndUpdate(id, {
+        ...req.body,
+        username,
+    }, {new: true} )
+    if(!user) {
+        return res.status(404).json({
+            mensaje:"Usuario no encontrado",
+            status: 404
+        })
+    }
 
-//     return res.status(200).json({
-//         mensaje: "Usuario modificado correctamente",
-//         status: 200,
-//         user
-//     })
-//     } catch (error) {
-//         return res.status(500).json({
-//             mensaje: "Hubo un error, intentelo mas tarde",
-//             status: 500
-//         })
-//     }
-// }
+    return res.status(200).json({
+        mensaje: "Usuario modificado correctamente",
+        status: 200,
+        user
+    })
+    } catch (error) {
+        return res.status(500).json({
+            mensaje: "Hubo un error, intentelo mas tarde",
+            status: 500
+        })
+    }
+}
 
 module.exports = {
     getAllUsers,
@@ -239,5 +239,5 @@ module.exports = {
     login,
     getUserById,
     deleteUser,
-    // updateUser
+    updateUser
 }
