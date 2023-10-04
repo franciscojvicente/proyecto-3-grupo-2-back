@@ -13,7 +13,7 @@ router.post("/registrar", register);
 router.post("/login", login);
 
 // user 
-router.get("/users", getAllUsers);
+router.get("/users", authenticateOwner, authenticateAdmin, getAllUsers);
 router.get("/user/:id", getUserById);
 router.put("/user/:id", updateUser);
 router.delete("/user/:id", deleteUser);
