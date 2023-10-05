@@ -24,10 +24,6 @@ const detailSchema = new mongoose.Schema({
     plan: {
         type: String,
         require: true
-    },
-    details: {
-        type: String,
-        require: true
     }
 })
 
