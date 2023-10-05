@@ -15,25 +15,25 @@ router.post("/login", login);
 
 // user 
 router.get("/users", authenticateAdmin, getAllUsers);
-router.get("/user/:id", getUserById);
-router.put("/user/:id", updateUser);
-router.delete("/user/:id", deleteUser);
+router.get("/user/:id", authenticateAdmin, getUserById);
+router.put("/user/:id", authenticateOwner, updateUser);
+router.delete("/user/:id", authenticateOwner, deleteUser);
 
-router.put("/admin/:id", changeToAdmin);
+router.put("/admin/:id", authenticateOwner, changeToAdmin);
 
 // patients
-router.post("/paciente", createPatient);
-router.get("/pacientes", getAllPatients);
-router.get("/paciente/:id", getPatientById);
-router.put("/paciente/:id", updatePatient);
-router.delete("/paciente/:id", deletePatient);
+router.post("/paciente", authenticateAdmin, createPatient);
+router.get("/pacientes", authenticateAdmin, getAllPatients);
+router.get("/paciente/:id", authenticateAdmin, getPatientById);
+router.put("/paciente/:id", authenticateAdmin, updatePatient);
+router.delete("/paciente/:id", authenticateAdmin, deletePatient);
 
 // turnos
-router.post("/turno", createTurno);
-router.get("/turnos", getAllTurnos);
-router.get("/turno/:id", getTurnoById);
-router.put("/turno/:id", updateTurno);
-router.delete("/turno/:id", deleteTurno);
+router.post("/turno", authenticateUser, createTurno);
+router.get("/turnos", authenticateAdmin, getAllTurnos);
+router.get("/turno/:id", authenticateAdmin, getTurnoById);
+router.put("/turno/:id", authenticateAdmin, updateTurno);
+router.delete("/turno/:id", authenticateAdmin, deleteTurno);
 
 // details
 router.post("/solicitud", newRequest);
