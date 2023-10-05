@@ -17,7 +17,7 @@ const authenticateOwner = (req, res, next) => {
         }
         if(user.rol !== "dueno") {
             return res.status(401).json({
-                mensaje: "Usuario no autorizado",
+                mensaje: "Usuario no autorizado, esta tarea solo la puede realizar el dueño",
                 status: 401
             })
         }
