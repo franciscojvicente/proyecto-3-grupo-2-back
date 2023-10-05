@@ -99,7 +99,7 @@ POST     /veterinaria/patitas/solicitud
 * [MongoDB Atlas](https://www.mongodb.com/cloud/atlas) - Cloud
 
 
-## Autores ✒️
+## Autor
 * **Francisco José Vicente**
 
 
