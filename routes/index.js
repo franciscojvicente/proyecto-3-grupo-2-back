@@ -5,7 +5,6 @@ const authenticateOwner = require("../middlewares/authOwner");
 const authenticateUser = require("../middlewares/authUser");
 const authenticateAdmin = require("../middlewares/authAdmin");
 const newRequest = require("../controllers/detailController");
-// falta middlewares de admin, dueño y user
 
 const router = require("express").Router();
 
@@ -19,6 +18,7 @@ router.get("/user/:id", authenticateAdmin, getUserById);
 router.put("/user/:id", authenticateOwner, updateUser);
 router.delete("/user/:id", authenticateOwner, deleteUser);
 
+// admin
 router.put("/admin/:id", authenticateOwner, changeToAdmin);
 
 // patients
