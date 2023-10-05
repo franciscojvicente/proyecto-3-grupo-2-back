@@ -1,7 +1,7 @@
 # Veterinaria Patitas
 
 ## Introduction
-Este repositorio es la representación en código del backend para la API del proyecto número 3 de RollingCode School en el que el tema a tratar es una veterinaria
+Este repositorio es la representación en código del backend para la API del proyecto número 3 de RollingCode School en el que el tema a tratar es una veterinaria.
 
 ## Run
 
@@ -56,13 +56,28 @@ POST     /veterinaria/patitas/login
 
 #### Pacient Routes
 
-
-
+```
+POST     /veterinaria/patitas/paciente
+GET     /veterinaria/patitas/pacientes
+GET     /veterinaria/patitas/paciente/:id
+PUT     /veterinaria/patitas/paciente/:id
+DELETE     /veterinaria/patitas/paciente/:id
+```
 
 #### Turno Routes
 
+```
+POST     /veterinaria/patitas/turno
+GET     /veterinaria/patitas/turnos
+GET     /veterinaria/patitas/turno/:id
+PUT     /veterinaria/patitas/turno/:id
+DELETE     /veterinaria/patitas/turno/:id
+```
+#### Planes Routes
 
-
+```
+DELETE     /veterinaria/patitas/solicitud
+```
 
 
 # Tecnologia Principal
