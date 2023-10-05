@@ -76,7 +76,7 @@ DELETE     /veterinaria/patitas/turno/:id
 #### Planes Routes
 
 ```
-DELETE     /veterinaria/patitas/solicitud
+POST     /veterinaria/patitas/solicitud
 ```
 
 
