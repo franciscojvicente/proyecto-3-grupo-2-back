@@ -4,11 +4,11 @@ const sendEmail = require("../utils/emailHandler");
 
 const newRequest = async (req, res) => {
     const { name, lastname, email, cellphone, plan } = req.body;
-    const detail = await Detail.findOne({email, cellphone});
+    const detail = await Detail.findOne({email, cellphone, plan});
     try {
         if(detail) {
             return res.status(400).json({
-                mensaje: "Ya tenemos una solicitud con dicho email y telefono, pronto nos pondremos en contacto", 
+                mensaje: "Ya tenemos una solicitud con dicho email y telefono para dicho plan, pronto nos pondremos en contacto", 
                 status: 400
             })
         }
