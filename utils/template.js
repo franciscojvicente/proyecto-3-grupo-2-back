@@ -6,10 +6,18 @@ const template = (newDetail) => {
   if (!selectedPlan) {
     return "Plan no encontrado"; 
   }
-  let planInfoText = "Información del plan:\n";
+  let planInfoText = "";
   for (const key in selectedPlan.infoPlan) {
     planInfoText += `${key}: ${selectedPlan.infoPlan[key]}\n`;
   }
+
+  const selectedPrice = planesBack.find(plan => plan.titulo === newDetail.plan);
+  if (!selectedPrice) {
+    return "Plan no encontrado";
+  }
+  let planPriceText = "Precio del plan: ";
+  
+    planPriceText += `${selectedPrice.costo}\n`;
 
   return `
     <!DOCTYPE html>
@@ -29,7 +37,7 @@ const template = (newDetail) => {
         <h3>Recibimos tu solicitud sobre el plan ${newDetail.plan}, te contamos que actualmente dicho plan cuenta con los siguientes servicios:</h3>
         
         <pre><strong>${planInfoText}</strong></pre>
-        
+        <pre><strong>${planPriceText}</strong></pre>
         <h3>Pronto nos pondremos en contacto con el número que nos aportaste (${newDetail.cellphone}), en caso de ser incorrecto, te pedimos que llenes nuevamente el formulario.</h3>
         <h5>Atentamente: Veterinaria Patitas. ¡Saludos! </h5>
         
