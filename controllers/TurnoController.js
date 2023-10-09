@@ -54,7 +54,7 @@ const getTurnoById = async (req, res) => {
 
 const createTurno = async (req, res) => {
     const { vet, pet, date, hour, details } = req.body;
-    const turno = await Turno.findOne({date, hour}); // confirmar si está bien así, si funciona
+    const turno = await Turno.findOne({date, hour}); 
     try {
         if(turno) {
             return res.status(400).json({
