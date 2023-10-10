@@ -29,7 +29,7 @@ router.put("/paciente/:id", authenticateAdmin, updatePatient);
 router.delete("/paciente/:id", authenticateAdmin, deletePatient);
 
 // turnos
-router.post("/turno", authenticateUser, createTurno);
+router.post("/turno", authenticateAdmin, createTurno);
 router.get("/turnos", authenticateAdmin, getAllTurnos);
 router.get("/turno/:id", authenticateAdmin, getTurnoById);
 router.put("/turno/:id", authenticateAdmin, updateTurno);
