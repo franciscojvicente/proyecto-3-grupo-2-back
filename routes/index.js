@@ -19,7 +19,7 @@ router.put("/user/:id", authenticateOwner, updateUser);
 router.delete("/user/:id", authenticateOwner, deleteUser);
 
 // admin
-router.put("/admin/:id", authenticateOwner, changeToAdmin);
+router.put("/admin/:id", authenticateAdmin, changeToAdmin);
 
 // patients
 router.post("/paciente", authenticateAdmin, createPatient);
