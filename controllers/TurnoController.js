@@ -58,7 +58,7 @@ const createTurno = async (req, res) => {
     try {
         if(turno) {
             return res.status(400).json({
-                mensaje: "Ya hay un turno existente en ese horario",
+                mensaje: "Ya hay un turno existente en ese horario ese mismo día",
                 status: 400
             })
         }

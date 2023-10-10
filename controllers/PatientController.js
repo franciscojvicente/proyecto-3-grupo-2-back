@@ -53,8 +53,8 @@ const getPatientById = async (req, res) => {
 }
 
 const createPatient = async (req, res) => {
-    const { name, lastname, email, cellphone, pet, kind, breed } = req.body;
-    const patient = await Patient.findOne({email});
+    const { name, lastname, username, phone, pet, kind, breed } = req.body;
+    const patient = await Patient.findOne({username});
     try {
         if(patient) {
             return res.status(400).json({
@@ -65,8 +65,8 @@ const createPatient = async (req, res) => {
         const newPatient = new Patient ({
             name,
             lastname,
-            email,
-            cellphone,
+            username,
+            phone,
             pet,
             kind,
             breed
@@ -87,10 +87,10 @@ const createPatient = async (req, res) => {
 
 const updatePatient = async (req, res) => {
     const { id } = req.params;
-    const { name, lastname, email, cellphone, pet, kind, breed } = req.body;
+    const { name, lastname, username, phone, pet, kind, breed } = req.body;
     try {
         const existingPatientWithSameEmail = await Patient.findOne({
-            email: email
+            username: username
         });
         if(existingPatientWithSameEmail) {
             return res.status(400).json({
