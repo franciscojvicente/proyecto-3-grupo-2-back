@@ -101,21 +101,3 @@ POST     /veterinaria/patitas/solicitud
 
 ## Autor
 * **Francisco José Vicente**
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

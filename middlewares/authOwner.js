@@ -1,6 +1,6 @@
 const passport = require("passport");
 
-const authenticateUser = (req, res, next) => {
+const authenticateOwner = (req, res, next) => {
     passport.authenticate("jwt", (err, user, info) => {
         if(err) {
             return res.status(500).json({
@@ -15,9 +15,9 @@ const authenticateUser = (req, res, next) => {
                 status: 404
             })
         }
-        if (user.rol !== "user") {
+        if(user.rol !== "dueno") {
             return res.status(401).json({
-                mensaje: "Debes ser iniciar sesión para acceder a esta función",
+                mensaje: "Usuario no autorizado, esta tarea solo la puede realizar el dueño",
                 status: 401
             })
         }
@@ -26,4 +26,4 @@ const authenticateUser = (req, res, next) => {
     }) (req, res, next)
 }
 
-module.exports = authenticateUser;
+module.exports = authenticateOwner;
