@@ -11,12 +11,12 @@ const patientSchema = new mongoose.Schema({
         require: true,
         trim: true
     },
-    email: {
+    username: {
         type: String,
         require: true,
         trim: [true, "Contiene espacios en blanco"]
     },
-    cellphone: {
+    phone: {
         type: Number,
         require: true,
         trim: true
