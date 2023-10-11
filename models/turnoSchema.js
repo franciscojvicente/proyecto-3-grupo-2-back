@@ -25,9 +25,8 @@ const turnoSchema = new mongoose.Schema({
     set: function (date) {
         if (typeof date === 'string') {
             const [day, month, year] = date.split('/').map(Number);
-            // Verificar si la fecha es válida
             if (isNaN(day) || isNaN(month) || isNaN(year)) {
-                return date; // Devuelve la fecha original si no es válida
+                return date;
             }
             return new Date(year, month - 1, day);
         }
