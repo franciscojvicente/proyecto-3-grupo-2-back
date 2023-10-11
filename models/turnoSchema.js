@@ -18,7 +18,7 @@ const turnoSchema = new mongoose.Schema({
         get: function (date) {
             if (date instanceof Date) {
                 const options = { day: '2-digit', month: '2-digit', year: 'numeric' };
-                return date.toLocaleDateString('es-ES', options);
+                return date.toLocaleDateString('es-AR', options);
             }
             return date;
         },
