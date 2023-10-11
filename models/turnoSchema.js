@@ -17,16 +17,14 @@ const turnoSchema = new mongoose.Schema({
         required: true,
         get: function (date) {
             if (date instanceof Date) {
-                const day = date.getDate().toString().padStart(2, '0');
-                const month = (date.getMonth() + 1).toString().padStart(2, '0');
-                const year = date.getFullYear();
-                return `${day}-${month}-${year}`;
+                const options = { day: '2-digit', month: '2-digit', year: 'numeric' };
+                return date.toLocaleDateString('es-ES', options);
             }
             return date;
         },
         set: function (date) {
             if (typeof date === 'string') {
-                const [day, month, year] = date.split('-').map(Number);
+                const [day, month, year] = date.split('/').map(Number);
                 return new Date(year, month - 1, day);
             }
             return date;
@@ -43,6 +41,7 @@ const turnoSchema = new mongoose.Schema({
         trim: true
     }
 });
+
 
 const Turno = mongoose.model("Turno", turnoSchema);
 
