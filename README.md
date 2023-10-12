@@ -1,7 +1,13 @@
 # Veterinaria Patitas
 
 ## Introduction
-Este repositorio es la representación en código del backend para la API del proyecto número 3 de RollingCode School en el que el tema a tratar es una veterinaria.
+Este repositorio es la representación en código del backend para la API del proyecto número 3 de RollingCode School en el que el tema a desarrollar es una veterinaria.
+
+- Burgos, Ulises Gastón
+- Homet, Sergio Nicolás
+- Hurtado, Gonzalo Javier
+- Pistan, Cynthia Daniela
+- Vicente, Francisco José
 
 ## Run
 
