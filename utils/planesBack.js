@@ -28,7 +28,7 @@ const planesBack = [
     },
     {
         id: 2,
-        titulo: "Estandar (Recomendado)",
+        titulo: "Estandar",
         infoPlan: {
             "Consulta y controles clinica general (horario diurno)": "100% de reintegro",
             "Colocación de Microchip": "50% de reintegro",
