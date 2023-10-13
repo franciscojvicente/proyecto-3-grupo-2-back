@@ -15,6 +15,12 @@ const authenticateUser = (req, res, next) => {
                 status: 404
             })
         }
+        if (user.rol !== "user") {
+            return res.status(401).json({
+                mensaje: "Debes ser iniciar sesión para acceder a esta función",
+                status: 401
+            })
+        }
         req.user = user;
         next();
     }) (req, res, next)

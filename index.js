@@ -11,16 +11,16 @@ const app = express();
 
 // middlewares
 app.use(cors());
-app.options('*',cors()); // permite hacer solicitudes a todas las rutas
+app.options('*',cors());
 app.use(express.json());
-app.use(express.urlencoded({extended: false})); // este se utiliza para analizar las solictudes entrantes con datos codificados en la url
+app.use(express.urlencoded({extended: false})); 
 app.use(morgan("dev"));
 
 // passport
 passport.use("jwt", jwtStrategy);
 
 // configuracion rutas
-app.use(process.env.API, router); // uso el middleware para encerrar todas las rutas
+app.use(process.env.API, router);
 
 const port = process.env.PORT;
 dbConnection();

@@ -15,7 +15,7 @@ const authenticateAdmin = (req, res, next) => {
                 status: 404
             })
         }
-        if(user.rol !== "admin") {
+        if(user.rol !== "admin" && user.rol !== "dueno") {
             return res.status(401).json({
                 mensaje: "Usuario no autorizado, necesitas ser administrador",
                 status: 401

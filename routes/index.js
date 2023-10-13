@@ -5,7 +5,6 @@ const authenticateOwner = require("../middlewares/authOwner");
 const authenticateUser = require("../middlewares/authUser");
 const authenticateAdmin = require("../middlewares/authAdmin");
 const newRequest = require("../controllers/detailController");
-// falta middlewares de admin, dueño y user
 
 const router = require("express").Router();
 
@@ -14,26 +13,27 @@ router.post("/registrar", register);
 router.post("/login", login);
 
 // user 
-router.get("/users", authenticateOwner, getAllUsers);
-router.get("/user/:id", getUserById);
-router.put("/user/:id", updateUser);
-router.delete("/user/:id", deleteUser);
+router.get("/users", authenticateAdmin, getAllUsers);
+router.get("/user/:id", authenticateAdmin, getUserById);
+router.put("/user/:id", authenticateOwner, updateUser);
+router.delete("/user/:id", authenticateOwner, deleteUser);
 
-router.put("/admin/:id", changeToAdmin);
+// admin
+router.put("/admin/:id", authenticateAdmin, changeToAdmin);
 
 // patients
-router.post("/paciente", createPatient);
-router.get("/pacientes", getAllPatients);
-router.get("/paciente/:id", getPatientById);
-router.put("/paciente/:id", updatePatient);
-router.delete("/paciente/:id", deletePatient);
+router.post("/paciente", authenticateAdmin, createPatient);
+router.get("/pacientes", authenticateAdmin, getAllPatients);
+router.get("/paciente/:id", authenticateAdmin, getPatientById);
+router.put("/paciente/:id", authenticateAdmin, updatePatient);
+router.delete("/paciente/:id", authenticateAdmin, deletePatient);
 
 // turnos
-router.post("/turno", createTurno);
-router.get("/turnos", getAllTurnos);
-router.get("/turno/:id", getTurnoById);
-router.put("/turno/:id", updateTurno);
-router.delete("/turno/:id", deleteTurno);
+router.post("/turno", authenticateAdmin, createTurno);
+router.get("/turnos", authenticateAdmin, getAllTurnos);
+router.get("/turno/:id", authenticateAdmin, getTurnoById);
+router.put("/turno/:id", authenticateAdmin, updateTurno);
+router.delete("/turno/:id", authenticateAdmin, deleteTurno);
 
 // details
 router.post("/solicitud", newRequest);
