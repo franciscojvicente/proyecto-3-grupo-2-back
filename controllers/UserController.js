@@ -90,7 +90,7 @@ const login = async (req, res) => {
     try {
         if(!user) {
             return res.status(404).json({
-                mensaje: "Usuario no encontrado",
+                mensaje: "Usuario no existente",
                 status: 404
             })
         }
