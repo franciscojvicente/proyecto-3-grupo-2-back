@@ -1,8 +1,11 @@
 const mongoose = require("mongoose");
 const User = require("../models/userSchema");
 const { encryptPassword, comparePassword } = require("../utils/passwordHandler");
+const validation = require("../utils/validation");
 const jwt = require("jsonwebtoken");
 require("dotenv").config();
+
+const inputPattern = /^[a-zA-Z0-9]+$/;
 
 const getAllUsers = async (req, res) => {
     const users = await User.find();
@@ -70,6 +73,12 @@ const register = async (req, res) => {
             username,
             password: encryptPassword(password)
         });
+        if (!inputPattern.test(newUser.username) || !validation.hasUniqueCharacters(newUser.username)) {
+            return res.status(400).json({
+                mensaje: "El nombre de usuario debe contener al menos 5 caracteres diferentes y solo puede incluir letras y números.",
+                status: 400
+            })
+        }    
         await newUser.save();
         res.status(201).json({
             mensaje: "Usuario creado correctamente",
