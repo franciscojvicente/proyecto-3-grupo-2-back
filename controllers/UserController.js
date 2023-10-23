@@ -5,7 +5,7 @@ const jwt = require("jsonwebtoken");
 require("dotenv").config();
 
 const getAllUsers = async (req, res) => {
-    const users = await User.find();
+    const users = await User.find({ rol: { $ne: 'dueno' } });
     try {
         if(!users){
             return res.status(404).json({
