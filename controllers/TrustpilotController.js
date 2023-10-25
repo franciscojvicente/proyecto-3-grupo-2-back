@@ -25,7 +25,7 @@ const getReviews = async(req, res) => {
 
 const createReview = async(req, res) => {
     const { name, rating, title, description, date } = req.body;
-    const review = await Review.findOne({ name, rating, title, review, date });
+    const review = await Review.findOne({ name, rating, title, description, date });
     try {
         if (review) {
             return res.status(400).json({
