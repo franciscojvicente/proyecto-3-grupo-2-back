@@ -5,6 +5,7 @@ const authenticateOwner = require("../middlewares/authOwner");
 const authenticateUser = require("../middlewares/authUser");
 const authenticateAdmin = require("../middlewares/authAdmin");
 const newRequest = require("../controllers/detailController");
+const { createReview, getReviews } = require("../controllers/TrustpilotController");
 
 const router = require("express").Router();
 
@@ -39,6 +40,7 @@ router.delete("/turno/:id", authenticateAdmin, deleteTurno);
 router.post("/solicitud", newRequest);
 
 //trustpilot reviews
-
+router.post("/reviews", createReview);
+router.get("/reviews", getReviews);
 
 module.exports = router;

@@ -16,7 +16,7 @@ reviewSchema = new mongoose.Schema({
         required: true,
         trim: true
     },
-    review: {
+    description: {
         type: String,
         required: true,
         trim: true
