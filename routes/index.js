@@ -1,5 +1,5 @@
 const { deletePatient, updatePatient, getPatientById, createPatient, getAllPatients } = require("../controllers/PatientController");
-const { getAllTurnos, createTurno, getTurnoById, updateTurno, deleteTurno} = require("../controllers/TurnoController");
+const { getAllTurnos, createTurno, getTurnoById, updateTurno, deleteTurno } = require("../controllers/TurnoController");
 const { getAllUsers, register, changeToAdmin, login, getUserById, deleteUser, updateUser } = require("../controllers/UserController");
 const authenticateOwner = require("../middlewares/authOwner");
 const authenticateUser = require("../middlewares/authUser");
@@ -12,7 +12,7 @@ const router = require("express").Router();
 router.post("/registrar", register);
 router.post("/login", login);
 
-// user 
+// user
 router.get("/users", authenticateOwner, getAllUsers);
 router.get("/user/:id", authenticateOwner, getUserById);
 router.put("/user/:id", authenticateOwner, updateUser);
@@ -37,5 +37,8 @@ router.delete("/turno/:id", authenticateAdmin, deleteTurno);
 
 // details
 router.post("/solicitud", newRequest);
+
+//trustpilot reviews
+
 
 module.exports = router;
