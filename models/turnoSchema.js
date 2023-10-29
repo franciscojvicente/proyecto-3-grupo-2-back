@@ -13,26 +13,25 @@ const turnoSchema = new mongoose.Schema({
         trim: true
     },
     date: {
-    type: Date,
-    required: true,
-    get: function (date) {
-        if (date instanceof Date) {
-            const options = { day: '2-digit', month: '2-digit', year: 'numeric' };
-            return date.toLocaleDateString('es-AR', options);
-        }
-        return date;
-    },
-    set: function (date) {
-        if (typeof date === 'string') {
-            const [day, month, year] = date.split('/').map(Number);
-            if (isNaN(day) || isNaN(month) || isNaN(year)) {
-                return date;
+        type: Date,
+        required: true,
+        get: function (date) {
+            if (date instanceof Date) {
+                const day = date.getDate().toString().padStart(2, '0');
+                const month = (date.getMonth() + 1).toString().padStart(2, '0');
+                const year = date.getFullYear();
+                return `${day}-${month}-${year}`;
             }
-            return new Date(year, month - 1, day);
+            return date;
+        },
+        set: function (date) {
+            if (typeof date === 'string') {
+                const [day, month, year] = date.split('-').map(Number);
+                return new Date(year, month - 1, day);
+            }
+            return date;
         }
-        return date;
-    }
-},
+    },
     hour: {
         type: String,
         required: true,
@@ -44,7 +43,6 @@ const turnoSchema = new mongoose.Schema({
         trim: true
     }
 });
-
 
 const Turno = mongoose.model("Turno", turnoSchema);
 

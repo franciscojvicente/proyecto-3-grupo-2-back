@@ -1,10 +1,12 @@
 const { deletePatient, updatePatient, getPatientById, createPatient, getAllPatients } = require("../controllers/PatientController");
-const { getAllTurnos, createTurno, getTurnoById, updateTurno, deleteTurno} = require("../controllers/TurnoController");
+const { getAllTurnos, createTurno, getTurnoById, updateTurno, deleteTurno } = require("../controllers/TurnoController");
 const { getAllUsers, register, changeToAdmin, login, getUserById, deleteUser, updateUser } = require("../controllers/UserController");
 const authenticateOwner = require("../middlewares/authOwner");
 const authenticateUser = require("../middlewares/authUser");
 const authenticateAdmin = require("../middlewares/authAdmin");
 const newRequest = require("../controllers/detailController");
+const { createReview, getReviews } = require("../controllers/TrustpilotController");
+const { getAllSponsors, createSponsor } = require("../controllers/SponsorsController");
 
 const router = require("express").Router();
 
@@ -12,9 +14,9 @@ const router = require("express").Router();
 router.post("/registrar", register);
 router.post("/login", login);
 
-// user 
-router.get("/users", authenticateAdmin, getAllUsers);
-router.get("/user/:id", authenticateAdmin, getUserById);
+// user
+router.get("/users", authenticateOwner, getAllUsers);
+router.get("/user/:id", authenticateOwner, getUserById);
 router.put("/user/:id", authenticateOwner, updateUser);
 router.delete("/user/:id", authenticateOwner, deleteUser);
 
@@ -37,5 +39,13 @@ router.delete("/turno/:id", authenticateAdmin, deleteTurno);
 
 // details
 router.post("/solicitud", newRequest);
+
+//trustpilot reviews
+router.post("/reviews", createReview);
+router.get("/reviews", getReviews);
+
+//sponsors
+router.post("/sponsors", createSponsor);
+router.get("/sponsors", getAllSponsors);
 
 module.exports = router;
