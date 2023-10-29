@@ -6,6 +6,7 @@ const authenticateUser = require("../middlewares/authUser");
 const authenticateAdmin = require("../middlewares/authAdmin");
 const newRequest = require("../controllers/detailController");
 const { createReview, getReviews } = require("../controllers/TrustpilotController");
+const { getAllSponsors, createSponsor } = require("../controllers/SponsorsController");
 
 const router = require("express").Router();
 
@@ -42,5 +43,9 @@ router.post("/solicitud", newRequest);
 //trustpilot reviews
 router.post("/reviews", createReview);
 router.get("/reviews", getReviews);
+
+//sponsors
+router.post("/sponsors", createSponsor);
+router.get("/sponsors", getAllSponsors);
 
 module.exports = router;
