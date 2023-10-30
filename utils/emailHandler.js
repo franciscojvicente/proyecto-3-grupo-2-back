@@ -8,7 +8,7 @@ const sendEmail = async (newDetail) => {
         port: 587,
         auth: {
             user: "veterinariapatitas4@gmail.com",
-            pass: "mnybnzhvfveocgov"
+            pass: "cbpxdglkdopklsaf"
         }
     })
     const response = await transporter.sendMail(emailTemplate(newDetail), (err, info) => {
