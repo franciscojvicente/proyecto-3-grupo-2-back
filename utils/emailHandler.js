@@ -1,6 +1,7 @@
 const { config } = require("dotenv");
 const nodemailer = require("nodemailer");
 const template = require("./template");
+require("dotenv").config();
 
 const sendEmail = async (newDetail) => {
     const transporter = nodemailer.createTransport({
@@ -8,7 +9,7 @@ const sendEmail = async (newDetail) => {
         port: 587,
         auth: {
             user: "veterinariapatitas4@gmail.com",
-            pass: "cbpxdglkdopklsaf"
+            pass: process.env.PASS_EMAIL
         }
     })
     const response = await transporter.sendMail(emailTemplate(newDetail), (err, info) => {
