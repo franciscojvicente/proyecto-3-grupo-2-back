@@ -1,8 +1,8 @@
 const planesBack = [
 	{
-		'id': 1,
-		'titulo': 'Basico',
-		'infoPlan': {
+		id: 1,
+		titulo: 'Basico',
+		infoPlan: {
 			'Consulta y controles en clínica general (horario diurno)': '100% de reintegro',
 			'Colocación de Microchip': '25% de reintegro',
 			'Corte de uñas y limpieza de oidos': '100% de reintegro',
@@ -24,12 +24,12 @@ const planesBack = [
 			'Farmacia': '20% de reintegro',
 			'Baño y Corte': '-',
 		},
-		'costo': '$28.000 por mes',
+		costo: '$28.000 por mes',
 	},
 	{
-		'id': 2,
-		'titulo': 'Estandar',
-		'infoPlan': {
+		id: 2,
+		titulo: 'Estandar',
+		infoPlan: {
 			'Consulta y controles clinica general (horario diurno)': '100% de reintegro',
 			'Colocación de Microchip': '50% de reintegro',
 			'Corte de uñas y limpieza de oidos': '100% de reintegro',
@@ -51,12 +51,12 @@ const planesBack = [
 			'Farmacia': '30% de reintegro',
 			'Baño y Corte': '50% de reintegro',
 		},
-		'costo': '$40.000 por mes',
+		costo: '$40.000 por mes',
 	},
 	{
-		'id': 3,
-		'titulo': 'Premium',
-		'infoPlan': {
+		id: 3,
+		titulo: 'Premium',
+		infoPlan: {
 			'Consulta y controles clinica general (horario diurno)': '100% de reintegro',
 			'Colocación de Microchip': '100% de reintegro',
 			'Corte de uñas y limpieza de oidos': '100% de reintegro',
@@ -78,7 +78,7 @@ const planesBack = [
 			'Farmacia': '40% de reintegro',
 			'Baño y Corte': '50% de reintegro',
 		},
-		'costo': '$75.000 por mes',
+		costo: '$75.000 por mes',
 	},
 ];
 
